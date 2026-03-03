@@ -1,55 +1,41 @@
 # 🚀 JustRunMy 自动续期（GitHub Actions）
 
-一个基于 GitHub Actions 的自动化脚本，用于定时登录并自动续期 JustRunMy 应用。
+这是一个基于 GitHub Actions 的自动化脚本，用于定时登录并自动续期 JustRunMy 应用。
 
 为了保护账号和代理安全，所有敏感信息均通过 GitHub Secrets 进行配置。
 
-──────────────────────────────
+━━━━━━━━━━━━━━━━━━━━━━
 
-【⚙️ 必须配置的环境变量】
+🔐 Secrets 配置说明
 
-在运行脚本前，你必须在 GitHub 仓库中添加以下 3 个 Secrets 变量。
+| Secret 名称         | 是否必填 | 说明                                        |
+|---------------------|----------|---------------------------------------------|
+| JUSTRUNMY_EMAIL     | ✅ 必填  | JustRunMy 登录邮箱                          |
+| JUSTRUNMY_PASSWORD  | ✅ 必填  | JustRunMy 登录密码                          |
+| GOST_PROXY_TARGET   | ✅ 必填  | Gost 代理完整地址（需包含协议，如 socks5://） |
 
-📍 配置路径：
+━━━━━━━━━━━━━━━━━━━━━━
 
-进入你的 GitHub 仓库
-➡ 点击顶部 Settings
-➡ 点击左侧 Secrets and variables
-➡ 点击 Actions
-➡ 点击绿色按钮 New repository secret
+📌 示例填写格式（复制下面三行，分开添加）：
 
-──────────────────────────────
+JUSTRUNMY_EMAIL=abc@def.com  
+JUSTRUNMY_PASSWORD=abc123  
+GOST_PROXY_TARGET=socks5://user:pass@123.456.789.012:1080
 
-【📝 需要添加的 3 个变量】
+━━━━━━━━━━━━━━━━━━━━━━
 
-1️⃣ 变量名：JUSTRUNMY_EMAIL
-Secret 填写：你的 JustRunMy 登录邮箱
-示例：abc@def.com
-说明：JustRunMy 登录邮箱
+📍 添加路径（如何添加 Secrets）：
 
-2️⃣ 变量名：JUSTRUNMY_PASSWORD
-Secret 填写：你的 JustRunMy 登录密码
-示例：abc123
-说明：JustRunMy 登录密码
+1. 进入你的 GitHub 仓库  
+2. 点击顶部的「Settings」  
+3. 左侧菜单选择「Secrets and variables」 → 「Actions」  
+4. 点击绿色的「New repository secret」按钮  
+5. 分别添加上面的三个变量名称与对应值
 
-3️⃣ 变量名：GOST_PROXY_TARGET
-Secret 填写：你的 Gost 代理完整地址
-示例：socks5://用户名:密码@123.456.789.012:1234
-说明：必须包含协议（socks5/http 等）
-
-──────────────────────────────
-
-【📌 示例格式参考】
-
-JUSTRUNMY_EMAIL=abc@def.com
-JUSTRUNMY_PASSWORD=abc123
-GOST_PROXY_TARGET=socks5://x:x@123.456.789.012:1234
-
-──────────────────────────────
+━━━━━━━━━━━━━━━━━━━━━━
 
 ⚠️ 注意事项：
 
-- 必须使用 Repository Secrets
-- 不要写入代码文件
-- 不要提交到仓库
-- 三个变量必须全部填写
+- Secrets 是私密的，不会显示在代码中
+- 三个变量都为 **必填项**
+- 不要把变量值写入到代码文件中
